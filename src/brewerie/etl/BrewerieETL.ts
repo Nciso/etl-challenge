@@ -6,9 +6,9 @@ export class BrewerieETL extends BaseETL<BrewerieETLDTO>  {
   constructor(){
     super()
   }
-  async perform(): Promise<BrewerieETLDTO> {
+  public async perform(): Promise<BrewerieETLDTO> {
     await this.extract()
-    throw new Error('Method not implemented.');
+    //throw new Error('Method not implemented.');
     return Promise.resolve([
       {
         state: 'hola',
@@ -18,7 +18,7 @@ export class BrewerieETL extends BaseETL<BrewerieETLDTO>  {
       }
     ])
   }
-  async extract(): Promise<void> {
+  protected async extract(): Promise<void> {
     const options = {
       hostname: 'api.openbrewerydb.org',
       port: 443,
@@ -29,7 +29,7 @@ export class BrewerieETL extends BaseETL<BrewerieETLDTO>  {
     this.rawData = await client.perform(options)
     console.log(this.rawData[0])
   }
-  transform(): void {
+  protected transform(): void {
     //execute all steps, create step 
     //const map = new Map<>
     this.rawData.forEach(raw =>{
@@ -37,7 +37,7 @@ export class BrewerieETL extends BaseETL<BrewerieETLDTO>  {
     })
     throw new Error('Method not implemented.');
   }
-  load(): Promise<BrewerieETLDTO> {
+  protected load(): Promise<BrewerieETLDTO> {
     throw new Error('Method not implemented.');
   }
   
