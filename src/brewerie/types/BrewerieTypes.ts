@@ -10,8 +10,8 @@ interface BrewerieETLElement {
 
 export type BrewerieETLDTO = BrewerieETLElement[]
 
-interface BrewerieETLContext {
-  states: Map<UsRegions, Brewerie[]>
+export interface BrewerieETLContext {
+  region: Map<UsRegions, Brewerie[]>
   current: Brewerie | RawBrewerie 
 }
 
@@ -38,7 +38,7 @@ export interface Brewerie {
 }
 
 
-interface RawBrewerie {
+export interface RawBrewerie {
   id: number,
   obdb_id?: string,
   name: string,
