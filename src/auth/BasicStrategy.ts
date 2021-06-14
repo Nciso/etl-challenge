@@ -1,9 +1,9 @@
 
 import passportHttp from 'passport-http'
-import { UserType } from '../repositories/UserType';
-import { Repository } from '../repositories/BaseRepository';
-import { UserRepository } from '../repositories/UserRepository';
-import { BaseAuthStrategy } from './BaseAuthStrategy';
+import { UserType } from '../users/UserType';
+import { Repository } from '../core/repositories/BaseRepository';
+import { UserRepository } from '../users/UserRepository';
+import { BaseAuthStrategy } from '../core/auth/BaseAuthStrategy';
 const BasicStrategy = passportHttp.BasicStrategy;
 
 
