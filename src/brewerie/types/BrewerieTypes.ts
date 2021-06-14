@@ -38,24 +38,9 @@ export interface Brewerie {
 }
 
 
-export interface RawBrewerie {
+export type RawBrewerie = {
   id: number,
   obdb_id?: string,
   name: string,
-  brewerie_type: string,
-  street?: string,
-  address_2?: string,
-  address_3?: string,
-  city?: string,
-  state?: string,
-  country_province?: string,
-  postal_code?: string,
-  country?:string,
-  region?: string,
-  longitude?: number,
-  latitude?: number,
-  phone?: string,
-  website_url?:string,
-  updated_at?: string,
-  created_at?: string
+  [key: string]: any
 }
