@@ -7,15 +7,15 @@ import { BaseAuthStrategy } from './BaseAuthStrategy';
 const BasicStrategy = passportHttp.BasicStrategy;
 
 
-export class BasicAuthStrategy extends BaseAuthStrategy {
+export class BasicAuthStrategy extends BaseAuthStrategy<UserType> {
   constructor() {
     super('basic');
   }
 
-  initStrategy(repository: Repository = new UserRepository()) {
+  initStrategy(repository: Repository<UserType> = new UserRepository()) {
     this.strategy = new BasicStrategy(
       (username: string, password: string, done) => {
-        let user = repository.getByName(username) as UserType
+        let user = repository.getByName(username)
         if (user && user.password === password) {
           return done(null, {
             user_name: 'autocloud'
