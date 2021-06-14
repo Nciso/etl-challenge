@@ -1,10 +1,9 @@
 import express from 'express'
-// import { breweriesRouter } from '../../../modules/users/infra/http/routes';
+import { BrewerieController } from '../brewerie/controllers/BrewerieController';
 
 const v1Router = express.Router();
 
-// v1Router.use('/breweries', breweriesRouter);
+v1Router.use('/breweries',(req, res) => new BrewerieController().execute(req, res) );
 
-v1Router.use('/', (req, res) => res.status(200).json('hello'))
 
 export { v1Router }
