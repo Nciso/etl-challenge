@@ -20,7 +20,8 @@
     "prestart": "yarn run build",
     "start": "nodemon .",
     "view:coverage": "serve coverage/lcov-report",
-    "clean": "rm -rf coverage src/**/*.js src/**/*.map"
+    "clean": "rm -rf coverage src/**/*.js src/**/*.map",
+    "start:prod": "node ./dist/index.js"
   },
   "devDependencies": {
     "@types/express": "^4.17.12",
