@@ -3,7 +3,7 @@
 
 type UsRegions = 'west' | 'midwest' |'northeast' | 'south'
 
-interface BrewerieETLElement {
+export interface BrewerieETLElement {
   state: string,
   breweries: Brewerie[]
 }
@@ -12,7 +12,7 @@ export type BrewerieETLDTO = BrewerieETLElement[]
 
 export interface BrewerieETLContext {
   states: Map<string, Brewerie[]>
-  current: Brewerie | RawBrewerie 
+  current: Brewerie | RawBrewerie
 }
 
 export interface Brewerie {

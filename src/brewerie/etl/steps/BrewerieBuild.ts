@@ -6,19 +6,22 @@ import { camalize } from '../utils/camelize';
 
 
 export class BrewerieBuild extends BaseETLStep<BrewerieETLContext>{
-  public perform(context: BrewerieETLContext): BrewerieETLContext {
+  public perform(context: BrewerieETLContext): boolean {
     let current = context.current 
-    let keys = Object.keys(current)
     let builder = proxyBuilder<Brewerie>()
     let k: keyof typeof current;
     for(k in current){
       let camelCase = camalize(k) as keyof Brewerie
-      console.log(camelCase)
       builder[camelCase](current[k])
     }
     const brewerie = builder.build()
     context.current = brewerie
-    return super.perform(context)
+
+    if(typeof this.nextHandler !== 'undefined'){
+      return this.nextHandler.perform(context)
+    }else {
+      return false
+    }
   }
 }
 

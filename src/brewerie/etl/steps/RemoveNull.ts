@@ -5,7 +5,7 @@ import { BrewerieETLContext, RawBrewerie } from '../../types/BrewerieTypes';
 
 
 export class RemoveNull extends BaseETLStep<BrewerieETLContext>{
-  public perform(context: BrewerieETLContext): BrewerieETLContext {
+  public perform(context: BrewerieETLContext): boolean {
     let current = context.current as RawBrewerie
     //remove null
     let notNull:RawBrewerie = {
@@ -23,7 +23,11 @@ export class RemoveNull extends BaseETLStep<BrewerieETLContext>{
       }
     }
     context.current = notNull
-    return super.perform(context)
+    if(typeof this.nextHandler !== 'undefined'){
+      return this.nextHandler.perform(context)
+    }else {
+      return false
+    }
   }
 }
 

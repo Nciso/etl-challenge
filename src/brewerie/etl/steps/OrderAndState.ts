@@ -6,7 +6,7 @@ import { compareBreweries, insertedSorted } from '../utils/insertSorted';
 
 
 export class OrderAndState extends BaseETLStep<BrewerieETLContext>{
-  public perform(context: BrewerieETLContext): BrewerieETLContext {
+  public perform(context: BrewerieETLContext):boolean {
     let current = context.current
     if (!('state' in current)) {
       return this.breakChain()
@@ -21,7 +21,11 @@ export class OrderAndState extends BaseETLStep<BrewerieETLContext>{
     } else {
       context.states.set(state, [context.current as Brewerie])
     }
-    return super.perform(context)
+    if(typeof this.nextHandler !== 'undefined'){
+      return this.nextHandler.perform(context)
+    }else {
+      return false
+    }
   }
 }
 
