@@ -5,7 +5,7 @@ describe('step 1 of etl',()=>{
   it('should remove nulls', () => {
     let remove = new RemoveNull()
     let context:BrewerieETLContext = {
-      region: new Map(),
+      states: new Map(),
       current: { 
         id: 9094,
         obdb_id: 'bnaf-llc-austin',
