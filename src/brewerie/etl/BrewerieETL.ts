@@ -1,22 +1,17 @@
 import { RestClient } from '../../core/http_client/RestClient';
 import { BaseETL } from '../../core/etl/BaseETL';
-import {BrewerieETLDTO, RawBrewerie} from '../types/BrewerieTypes'
+import { Brewerie, BrewerieETLDTO, RawBrewerie, BrewerieETLContext, BrewerieETLElement } from '../types/BrewerieTypes'
+import chain from './chain'
 export class BrewerieETL extends BaseETL<BrewerieETLDTO>  {
-  private rawData:RawBrewerie[] = []
-  constructor(){
+  private rawData: RawBrewerie[] = []
+  private resultMap: Map<string, Brewerie[]>
+  constructor() {
     super()
   }
   public async perform(): Promise<BrewerieETLDTO> {
     await this.extract()
-    //throw new Error('Method not implemented.');
-    return Promise.resolve([
-      {
-        state: 'hola',
-        breweries: [
-          
-        ]
-      }
-    ])
+    await this.transform()
+    return await this.load()
   }
   protected async extract(): Promise<void> {
     const options = {
@@ -27,19 +22,37 @@ export class BrewerieETL extends BaseETL<BrewerieETLDTO>  {
     }
     const client = new RestClient()
     this.rawData = await client.perform(options)
-    console.log(this.rawData[0])
+    console.log(this.rawData)
+
   }
   protected transform(): void {
+    const chainOfResponsability = chain
     //execute all steps, create step 
-    //const map = new Map<>
-    this.rawData.forEach(raw =>{
-        //execute chain of responsability of all steps
+    const map = new Map<string, Brewerie[]>()
+    this.rawData.forEach(raw => {
+      //execute chain of responsability of all steps
+      let context: BrewerieETLContext = {
+        current: raw,
+        states: map
+      }
+      chainOfResponsability.perform(context)
+      
     })
-    throw new Error('Method not implemented.');
+    this.resultMap = map
   }
   protected load(): Promise<BrewerieETLDTO> {
-    throw new Error('Method not implemented.');
+    const transformedData: BrewerieETLDTO = []
+    this.resultMap.forEach((value: Brewerie[], key: string) => {
+      const result: BrewerieETLElement = {
+        state: key,
+        breweries: value
+      }
+      if(result.breweries.length > 0){
+        transformedData.push(result)
+      }
+    });
+    return Promise.resolve(transformedData)
   }
-  
+
 
 }
