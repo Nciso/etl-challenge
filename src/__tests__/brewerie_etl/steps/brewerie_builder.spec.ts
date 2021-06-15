@@ -5,7 +5,7 @@ describe('step 2', () => {
   it('should create a brewerie', () => {
     let step2 = new BrewerieBuild()
     let context:BrewerieETLContext = {
-      region: new Map(),
+      states: new Map(),
       current: {
         id: 9094,
         obdb_id: 'bnaf-llc-austin',
