@@ -16,7 +16,13 @@ The project is based on docker, to be able to run the project run the following
 Make the following request to this endpoint
 
 ```
-GET http://localhost:8080/api/v1//breweries
+GET http://localhost:8080/api/v1/breweries
+AUTH: {
+  type: Basic
+  username: autocloud,
+  password: autocloudisawesome
+}
+
 
 Response
 [
@@ -146,3 +152,15 @@ orderByState.setNext(addRegion)
 
 export default removenNull
 ```
+
+## Auth
+
+It uses the BasicStrategy from passport
+
+To add more users, you could append those here https://github.com/Nciso/etl-challenge/blob/master/src/users/users.ts
+
+# Test
+
+To run the test suit, just do the following after you have this project setted up
+
+`$ yarn test`
