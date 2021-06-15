@@ -6,11 +6,11 @@ export class UserRepository extends BaseRepository<UserType> {
   private users:UserType[];
   constructor(){
     super()
-    this.users = <UserType[]>users
+    this.users = (users as UserType[])
 
   }
 
   getByName(name:string): UserType {
-    return this.users.find(u => u.name == name)
+    return this.users.find(u => u.name === name)
   }
 }

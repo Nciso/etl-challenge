@@ -1,3 +1,4 @@
+/* tslint:disable */
 export const raw_data:any = [
   {
     "id": 9094,

@@ -6,17 +6,17 @@ import { BrewerieETLContext, RawBrewerie } from '../../types/BrewerieTypes';
 
 export class RemoveNull extends BaseETLStep<BrewerieETLContext>{
   public perform(context: BrewerieETLContext): boolean {
-    let current = context.current as RawBrewerie
-    //remove null
-    let notNull:RawBrewerie = {
+    const current = context.current as RawBrewerie
+    // remove null
+    const notNull:RawBrewerie = {
       id: -1,
       name:''
     }
 
-    let k: keyof RawBrewerie;  
+    let k: keyof RawBrewerie;
     for (k in current) {
-      const v = current[k];  
-      
+      const v = current[k];
+
       if(v !== null){
         notNull[k] = v
       }

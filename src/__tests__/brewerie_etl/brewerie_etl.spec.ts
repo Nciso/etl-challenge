@@ -14,7 +14,7 @@ jest.mock('../../core/http_client/RestClient', () => {
         }
       }
     })
-    
+
   };
 });
 
@@ -22,15 +22,15 @@ jest.mock('../../core/http_client/RestClient', () => {
 describe('BrewerieETL', () => {
 
   const MockedRestClient = mocked(RestClient, true);
-  
+
   beforeEach(() => {
     MockedRestClient.mockClear();
 
 
   })
   it('should return a BrewerieETLDTO', async () => {
-    let subject = new BrewerieETL()
-    let result = await subject.perform()
+    const subject = new BrewerieETL()
+    const result = await subject.perform()
     expect(result).toStrictEqual(expectedResult)
   })
 

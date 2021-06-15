@@ -22,21 +22,19 @@ export class BrewerieETL extends BaseETL<BrewerieETLDTO>  {
     }
     const client = new RestClient()
     this.rawData = await client.perform(options)
-    console.log(this.rawData)
-
   }
   protected transform(): void {
     const chainOfResponsability = chain
-    //execute all steps, create step 
+    // execute all steps, create step
     const map = new Map<string, Brewerie[]>()
     this.rawData.forEach(raw => {
-      //execute chain of responsability of all steps
-      let context: BrewerieETLContext = {
+      // execute chain of responsability of all steps
+      const context: BrewerieETLContext = {
         current: raw,
         states: map
       }
       chainOfResponsability.perform(context)
-      
+
     })
     this.resultMap = map
   }
@@ -47,7 +45,7 @@ export class BrewerieETL extends BaseETL<BrewerieETLDTO>  {
         state: key,
         breweries: value
       }
-      if(result.breweries.length > 0){
+      if (result.breweries.length > 0) {
         transformedData.push(result)
       }
     });

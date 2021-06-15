@@ -1,6 +1,6 @@
 import { Polygon, Point } from './Polygon'
 
-let westRawPoints = [
+const westRawPoints = [
   [-124.572773, 48.837153],
   [-123.163948, 32.162244],
   [-103.124886, 32.125035],
@@ -10,7 +10,7 @@ let westRawPoints = [
   [-124.572773, 48.837153]
 ]
 
-let southRawPoints =[
+const southRawPoints =[
   [-106.486359, 32.072247],
   [-103.278351, 29.007089],
   [-97.433624, 25.966842],
@@ -25,7 +25,7 @@ let southRawPoints =[
   [-106.486359, 32.072247]
 ]
 
-let midWestRawPoint =[
+const midWestRawPoint =[
   [-104.022675, 48.89339],
   [-104.110565, 41.012807],
   [-102.00222, 40.699121],
@@ -37,7 +37,7 @@ let midWestRawPoint =[
   [-104.022675, 48.89339]
 ]
 
-let northEastRawPoints = [
+const northEastRawPoints = [
   [-80.980568, 49.965135],
   [-60.279922, 50.983289],
   [-58.533096, 45.341287],
@@ -50,8 +50,8 @@ const regionsNames = ['west', 'south', 'midwest', 'northeast']
 const rawPoints = [westRawPoints, southRawPoints, midWestRawPoint, northEastRawPoints]
 
 export const usRegions = rawPoints.map((raw, idx) => {
-  let points: Point[] = raw.map(p => {
-    let [lon, lat] = p
+  const points: Point[] = raw.map(p => {
+    const [lon, lat] = p
     return { lat, lon }
   })
   return new Polygon(points, regionsNames[idx])

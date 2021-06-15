@@ -28,17 +28,17 @@ describe('test four step', () => {
       updatedAt: '2016-07-24T00:00:00.000Z',
       createdAt: '2016-07-24T00:00:00.000Z'
     }
-    let context:BrewerieETLContext = {
+    const context:BrewerieETLContext = {
       states: new Map<string, Brewerie[]>(),
       current: brewery1
     }
     const breweries = [brewery2, brewery1, brewery3]
     const subject = new OrderAndState()
-    for(let br of breweries){
+    for(const br of breweries){
       context.current = br
       subject.perform(context)
     }
-    let map = context.states
+    const map = context.states
     expect(map.get('state2')).toEqual([brewery1, brewery2])
     expect(map.get('state1')).toEqual([brewery3])
   })
@@ -51,7 +51,7 @@ describe('test four step', () => {
       updatedAt: '2018-07-24T00:00:00.000Z',
       createdAt: '2018-07-24T00:00:00.000Z'
     }
-    let context:BrewerieETLContext = {
+    const context:BrewerieETLContext = {
       states: new Map<string, Brewerie[]>(),
       current: brewery1
     }

@@ -13,7 +13,7 @@ describe('add region step', () => {
       updatedAt: '2018-07-24T00:00:00.000Z',
       createdAt: '2018-07-24T00:00:00.000Z'
     }
-    let context: BrewerieETLContext = {
+    const context: BrewerieETLContext = {
       states: new Map<string, Brewerie[]>().set('state2', [brewery1]),
       current: brewery1
     }
@@ -32,13 +32,13 @@ describe('add region step', () => {
       updatedAt: '2018-07-24T00:00:00.000Z',
       createdAt: '2018-07-24T00:00:00.000Z'
     }
-    let context: BrewerieETLContext = {
+    const context: BrewerieETLContext = {
       states: new Map<string, Brewerie[]>().set('state2', [brewery1]),
       current: brewery1
     }
     const step = new AddRegionMap()
     step.perform(context)
-    //filter out
+    // filter out
     expect(context.states.get('state2')[0]).toEqual(undefined)
   })
 })

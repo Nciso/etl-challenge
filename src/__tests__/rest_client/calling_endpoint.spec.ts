@@ -2,10 +2,10 @@ import { RestClient } from '../../core/http_client/RestClient'
 
 
 describe('test rest client', ()=>{
-  
+
   describe('when status is 200 and payload is json', ()=> {
-    var client:any;
-   
+    let client:any;
+
     it('should return an array of objects', async () => {
       const options = {
         hostname: 'api.openbrewerydb.org',

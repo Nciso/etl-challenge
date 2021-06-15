@@ -15,7 +15,7 @@ export class BasicAuthStrategy extends BaseAuthStrategy<UserType> {
   initStrategy(repository: Repository<UserType> = new UserRepository()) {
     this.strategy = new BasicStrategy(
       (username: string, password: string, done) => {
-        let user = repository.getByName(username)
+        const user = repository.getByName(username)
         if (user && user.password === password) {
           return done(null, {
             user_name: 'autocloud'

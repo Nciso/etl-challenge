@@ -8,10 +8,10 @@ import { Point } from '../../../polygons/Polygon';
 export class AddRegionMap extends BaseETLStep<BrewerieETLContext>{
   public perform(context: BrewerieETLContext): boolean {
 
-    let map = context.states
-    for (let key of map.keys()) {
-      let breweries = map.get(key).filter(this.isValid)
-      let breweriesWithRegion = breweries.map(this.assingRegion)
+    const map = context.states
+    for (const key of map.keys()) {
+      const breweries = map.get(key).filter(this.isValid)
+      const breweriesWithRegion = breweries.map(this.assingRegion)
       map.set(key, breweriesWithRegion)
     }
 
@@ -30,8 +30,8 @@ export class AddRegionMap extends BaseETLStep<BrewerieETLContext>{
   private assingRegion(current: Brewerie): Brewerie {
 
 
-    let regions = usRegions
-    let position: Point = {
+    const regions = usRegions
+    const position: Point = {
       lat: +current.latitude,
       lon: +current.longitude
     }

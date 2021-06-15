@@ -7,12 +7,12 @@ import { compareBreweries, insertedSorted } from '../utils/insertSorted';
 
 export class OrderAndState extends BaseETLStep<BrewerieETLContext>{
   public perform(context: BrewerieETLContext):boolean {
-    let current = context.current
+    const current = context.current
     if (!('state' in current)) {
       return this.breakChain()
     }
-   
-    let state = current.state
+
+    const state = current.state
     if (context.states.has(state)) {
       // insert in order, worst case O(n)
       let arr = context.states.get(state)

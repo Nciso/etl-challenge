@@ -1,7 +1,7 @@
 import * as express from 'express'
 
 export abstract class BaseController {
-  
+
   protected req: express.Request;
   protected res: express.Response;
 

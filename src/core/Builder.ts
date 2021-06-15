@@ -5,9 +5,9 @@ type IBuilder<T> = {
 
 
 export function proxyBuilder<T>(): IBuilder<T> {
-  var built: any = {};
-  var builder = new Proxy({}, {
-    get: function(target, prop, receiver) {
+  const built: any = {};
+  const builder = new Proxy({}, {
+    get(target, prop, receiver) {
       if (prop === 'build') return () => built;
       return (x: any): any => {
         (built[prop] = x);

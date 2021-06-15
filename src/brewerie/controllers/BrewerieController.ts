@@ -10,7 +10,7 @@ export class BrewerieController extends BaseController {
     this.etl = new BrewerieETL();
   }
   async concreteExecute (): Promise<any> {
-    
+
     try {
       const result = await this.etl.perform();
 

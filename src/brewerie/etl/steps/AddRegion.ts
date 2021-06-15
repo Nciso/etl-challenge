@@ -7,13 +7,13 @@ import { Point } from '../../../polygons/Polygon';
 
 export class AddRegion extends BaseETLStep<BrewerieETLContext>{
   public perform(context: BrewerieETLContext): boolean {
-    let current = context.current
+    const current = context.current
     if (!('latitude' in current) || !('longitude' in current)) {
       return false
     }
 
-    let regions = usRegions
-    let position: Point = {
+    const regions = usRegions
+    const position: Point = {
       lat: +current.latitude,
       lon: +current.longitude
     }

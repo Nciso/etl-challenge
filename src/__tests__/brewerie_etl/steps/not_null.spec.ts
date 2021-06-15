@@ -3,10 +3,10 @@ import { BrewerieETLContext } from '../../../brewerie/types/BrewerieTypes'
 
 describe('step 1 of etl',()=>{
   it('should remove nulls', () => {
-    let remove = new RemoveNull()
-    let context:BrewerieETLContext = {
+    const remove = new RemoveNull()
+    const context:BrewerieETLContext = {
       states: new Map(),
-      current: { 
+      current: {
         id: 9094,
         obdb_id: 'bnaf-llc-austin',
         name: 'Bnaf, LLC',

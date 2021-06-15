@@ -3,8 +3,8 @@ import { BrewerieETLContext } from '../../../brewerie/types/BrewerieTypes'
 
 describe('step 2', () => {
   it('should create a brewerie', () => {
-    let step2 = new BrewerieBuild()
-    let context:BrewerieETLContext = {
+    const step2 = new BrewerieBuild()
+    const context:BrewerieETLContext = {
       states: new Map(),
       current: {
         id: 9094,
