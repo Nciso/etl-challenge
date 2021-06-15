@@ -1,8 +1,5 @@
 
 
-
-type UsRegions = 'west' | 'midwest' |'northeast' | 'south'
-
 export interface BrewerieETLElement {
   state: string,
   breweries: Brewerie[]
@@ -29,8 +26,8 @@ export interface Brewerie {
   postalCode?: string,
   country?:string,
   region?: string,
-  longitude?: number,
-  latitude?: number,
+  longitude?: string,
+  latitude?: string,
   phone?: string,
   websiteUrl?:string,
   updatedAt?: string,

@@ -10,7 +10,6 @@ export class AddRegionMap extends BaseETLStep<BrewerieETLContext>{
 
     let map = context.states
     for (let key of map.keys()) {
-      console.log(key)
       let breweries = map.get(key).filter(this.isValid)
       let breweriesWithRegion = breweries.map(this.assingRegion)
       map.set(key, breweriesWithRegion)

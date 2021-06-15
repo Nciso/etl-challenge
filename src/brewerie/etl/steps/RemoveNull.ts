@@ -10,8 +10,7 @@ export class RemoveNull extends BaseETLStep<BrewerieETLContext>{
     //remove null
     let notNull:RawBrewerie = {
       id: -1,
-      name:'',
-      brewerie_type:''
+      name:''
     }
 
     let k: keyof RawBrewerie;  
